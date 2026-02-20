@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golf Pro Sweden</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0b3d2e;
+      color: white;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0,0,0,0.5);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #00ffae;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffae;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1599058917765-a780eda07a3e') no-repeat center/cover;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      padding: 15px 30px;
+      border: none;
+      background: #00ffae;
+      color: #003d2e;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .hero button:hover {
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 80px 50px;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #145c42;
+      padding: 20px;
+      border-radius: 15px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .booking {
+      background: #0f5132;
+      padding: 40px;
+      border-radius: 20px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #06281d;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Golf Pro</h1>
+  <nav>
+    <a href="#">Hem</a>
+    <a href="#courses">Banor</a>
+    <a href="#booking">Boka</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Välkommen till Golf Pro Sweden</h2>
+  <p>Spela på Sveriges bästa golfbanor</p>
+  <button onclick="scrollToSection('booking')">Boka Nu</button>
+</div>
+
+<section id="courses">
+  <h2>Populära Golfbanor</h2>
+  <div class="courses">
+    <div class="card">
+      <h3>Links Bana</h3>
+      <p>Fantastisk kustbana med utmanande vind.</p>
+    </div>
+    <div class="card">
+      <h3>Skogsbana</h3>
+      <p>Vacker bana omgiven av skog och natur.</p>
+    </div>
+    <div class="card">
+      <h3>Parkbana</h3>
+      <p>Perfekt för både nybörjare och proffs.</p>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <h2>Boka din tid</h2>
+  <div class="booking">
+    <input type="text" placeholder="Ditt namn" id="name">
+    <input type="date" id="date">
+    <select id="course">
+      <option>Links Bana</option>
+      <option>Skogsbana</option>
+      <option>Parkbana</option>
+    </select>
+    <button onclick="book()">Boka</button>
+    <p id="confirmation"></p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Golf Pro Sweden</p>
+</footer>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function book() {
+    const name = document.getElementById('name').value;
+    const date = document.getElementById('date').value;
+    const course = document.getElementById('course').value;
+
+    if (!name || !date) {
+      alert('Fyll i alla fält');
+      return;
+    }
+
+    document.getElementById('confirmation').innerText =
+      `Tack ${name}! Din bokning för ${course} den ${date} är bekräftad.`;
+  }
+</script>
+
+</body>
+</html>
